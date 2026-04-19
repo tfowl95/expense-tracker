@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 
-from cli import arg_parse
-from pathlib import Path
+from cli import cli_arg_parse
+from storage import set_output_path, create_file_if_missing
 
-args = arg_parse()
-
-script_dir = Path(__file__).resolve().parent
-output_file = script_dir / "expenses.csv"
-
+args = cli_arg_parse()
+output_file = set_output_path()
+create_file_if_missing(output_file)

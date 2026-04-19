@@ -1,6 +1,6 @@
 import argparse
 
-def arg_parse():
+def cli_arg_parse():
     parser = argparse.ArgumentParser()
     subparsers = parser.add_subparsers(dest="command")
 
