@@ -9,7 +9,7 @@ def parse_date(input):
 
 def cli_arg_parse():
     parser = argparse.ArgumentParser()
-    subparser = parser.add_subparsers(dest="command")
+    subparser = parser.add_subparsers(dest="command", required = True)
 
     # add command
     add_parser = subparser.add_parser("add")

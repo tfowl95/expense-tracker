@@ -6,9 +6,11 @@ def get_file_path():
     return script_dir / "expenses.csv"
 
 def create_file_if_missing(output_file):
+    headers = ("ID", "Description", "Amount", "Date")
     if not Path(output_file).exists():
         with open(output_file, "w") as file:
-            file.close()
+            writer=csv.writer(file)
+            writer.writerow(headers)
 
 def get_csv_contents(file_path):
     with open(file_path, "r") as file:
