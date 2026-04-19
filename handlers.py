@@ -12,8 +12,6 @@ def dispatch(args, file_path):
 def handle_add(args, file_path):
     add_expense(args, file_path)
 
-
-
 def handle_list(args, file_path):
     pass
 
