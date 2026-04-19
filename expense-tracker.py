@@ -10,4 +10,4 @@ create_file_if_missing(file_path)
 
 expenses = get_csv_contents(file_path)
 
-dispatch(args)
+dispatch(args, file_path)
