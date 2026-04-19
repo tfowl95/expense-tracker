@@ -15,6 +15,6 @@ def cli_arg_parse():
     add_parser = subparser.add_parser("add")
     add_parser.add_argument("--description", type = str, required = True)
     add_parser.add_argument("--amount", type = float, required = True)
-    add_parser.add_argument("--date", type = parse_date)
+    add_parser.add_argument("--date", type = parse_date, default = datetime.today().date())
 
     return parser.parse_args()
