@@ -1,5 +1,6 @@
 from pathlib import Path
 import csv
+from datetime import datetime
 
 def get_file_path():
     script_dir = Path(__file__).resolve().parent
@@ -92,4 +93,38 @@ def delete_expense(args, file_path):
     print(f"Expense updated successfully.")
 
 def summary_expense(args, file_path):
-    print("in summary")
+    if args.month:
+
+        months = {
+            1: "January",
+            2: "February",
+            3: "March",
+            4: "April",
+            5: "May",
+            6: "June",
+            7: "July",
+            8: "August",
+            9: "September",
+            10: "October",
+            11: "November",
+            12: "December"
+        }
+
+        with open(file_path, "r") as file:
+            reader = csv.reader(file)
+            next(reader)
+            sum = 0
+            for row in reader:
+                row_date = datetime.strptime(row[3], "%m/%d/%Y").date()
+                row_month = row_date.month
+                if args.month == row_month:
+                    sum += float(row[2])
+        print(f"Total expenses for {months[args.month]}: ${sum:.2f}")
+    else:
+        with open(file_path, "r") as file:
+            reader = csv.reader(file)
+            next(reader)
+            sum = 0
+            for row in reader:
+                sum += float(row[2])
+        print(f"Total expenses: ${sum:.2f}")
