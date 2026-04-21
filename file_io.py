@@ -67,4 +67,10 @@ def update_expense(args, file_path):
     print(f"Expense updated successfully.")
 
 def list_expenses(args, file_path):
-    pass
+    with open(file_path, "r") as file:
+        reader = csv.reader(file)
+        header = next(reader)
+        print(f"{header[0]:4}{header[2]:12}{header[3]:14}{header[1]:10}")
+
+        for row in reader:
+            print(f"{row[0]:4}${row[2]:11}{row[3]:14}{row[1]:10}")
