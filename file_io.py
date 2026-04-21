@@ -45,4 +45,23 @@ def add_expense(args, file_path):
     print(f"Expense added successfully (ID: {new_id})")
 
 def update_expense(args, file_path):
-    pass
+    new_csv = []
+
+    with open(file_path, "r") as file:
+        reader = csv.reader(file)
+        new_csv.append(next(reader))
+        for row in reader:
+            if row and int(row[0]) == args.id:
+                if args.description:
+                    row[1] = args.description
+                if args.amount:
+                    row[2] = args.amount
+                if args.date:
+                    row[3] = args.date.strftime("%m/%d/%Y")
+            new_csv.append(row)
+    
+    with open(file_path, "w") as file:
+        writer = csv.writer(file)
+        writer.writerows(new_csv)
+    
+    print(f"Expense updated successfully.")
