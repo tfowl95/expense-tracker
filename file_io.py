@@ -76,4 +76,17 @@ def list_expenses(args, file_path):
             print(f"{row[0]:4}${row[2]:11}{row[3]:14}{row[1]:10}")
 
 def delete_expense(args, file_path):
-    print("in delete")
+    new_csv = []
+    
+    with open(file_path, "r") as file:
+        reader = csv.reader(file)
+        new_csv.append(next(reader))
+        for row in reader:
+            if row and int(row[0]) != args.id:
+                new_csv.append(row)
+    
+    with open(file_path, "w") as file:
+        writer = csv.writer(file)
+        writer.writerows(new_csv)
+
+    print(f"Expense updated successfully.")
