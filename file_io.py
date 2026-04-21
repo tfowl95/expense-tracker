@@ -65,3 +65,6 @@ def update_expense(args, file_path):
         writer.writerows(new_csv)
     
     print(f"Expense updated successfully.")
+
+def list_expenses(args, file_path):
+    pass

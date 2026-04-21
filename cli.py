@@ -23,6 +23,9 @@ def cli_arg_parse():
     update_parser.add_argument("--description", type = str)
     update_parser.add_argument("--amount", type = float)
     update_parser.add_argument("--date", type = parse_date)
+
+    # list command
+    update_parser = subparser.add_parser("list")
     
 
     args = parser.parse_args()
