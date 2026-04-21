@@ -1,4 +1,4 @@
-from storage import add_expense
+from file_io import add_expense
 
 def dispatch(args, file_path):
     handlers = {
