@@ -1,4 +1,4 @@
-from file_io import add_expense, update_expense, list_expenses
+from file_io import add_expense, update_expense, list_expenses, delete_expense
 
 def dispatch(args, file_path):
     handlers = {
@@ -23,4 +23,4 @@ def handle_summary(args, file_path):
     pass
 
 def handle_delete(args, file_path):
-    pass
+    delete_expense(args, file_path)

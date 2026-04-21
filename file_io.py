@@ -74,3 +74,6 @@ def list_expenses(args, file_path):
 
         for row in reader:
             print(f"{row[0]:4}${row[2]:11}{row[3]:14}{row[1]:10}")
+
+def delete_expense(args, file_path):
+    print("in delete")

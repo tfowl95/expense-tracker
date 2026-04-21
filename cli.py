@@ -13,7 +13,7 @@ def cli_arg_parse():
 
     # add command
     add_parser = subparser.add_parser("add")
-    add_parser.add_argument("--description", type = str, required = True)
+    add_parser.add_argument("description", type = str)
     add_parser.add_argument("--amount", type = float, required = True)
     add_parser.add_argument("--date", type = parse_date, default = datetime.today().date())
 
@@ -25,7 +25,11 @@ def cli_arg_parse():
     update_parser.add_argument("--date", type = parse_date)
 
     # list command
-    update_parser = subparser.add_parser("list")
+    list_parser = subparser.add_parser("list")
+
+    # delete command
+    delete_parser = subparser.add_parser("delete")
+    delete_parser.add_argument("id", type = int)
     
 
     args = parser.parse_args()
