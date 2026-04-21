@@ -43,3 +43,6 @@ def add_expense(args, file_path):
         writer = csv.writer(file)
         writer.writerow((new_id, args.description, f"{args.amount:.2f}", args.date.strftime("%m/%d/%Y")))
     print(f"Expense added successfully (ID: {new_id})")
+
+def update_expense(args, file_path):
+    pass

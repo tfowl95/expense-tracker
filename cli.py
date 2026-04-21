@@ -17,4 +17,18 @@ def cli_arg_parse():
     add_parser.add_argument("--amount", type = float, required = True)
     add_parser.add_argument("--date", type = parse_date, default = datetime.today().date())
 
-    return parser.parse_args()
+    # update command
+    update_parser = subparser.add_parser("update")
+    update_parser.add_argument("id", type = int)
+    update_parser.add_argument("--description", type = str)
+    update_parser.add_argument("--amount", type = float)
+    update_parser.add_argument("--date", type = parse_date)
+    
+
+    args = parser.parse_args()
+
+    # additional validation check for update command
+    if args.command == "update" and args.description == None and args.amount == None and args.date == None:
+        parser.error("'update' command requires at least one optional argument to update: --description --amount --date")
+
+    return args
