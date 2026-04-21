@@ -30,11 +30,13 @@ def cli_arg_parse():
     # delete command
     delete_parser = subparser.add_parser("delete")
     delete_parser.add_argument("id", type = int)
+
+    # summary command
+    summary_parser = subparser.add_parser("summary")
+    summary_parser.add_argument("--month", type = int)
     
-
-    args = parser.parse_args()
-
     # additional validation check for update command
+    args = parser.parse_args()
     if args.command == "update" and args.description == None and args.amount == None and args.date == None:
         parser.error("'update' command requires at least one optional argument to update: --description --amount --date")
 

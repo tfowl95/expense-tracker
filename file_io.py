@@ -90,3 +90,6 @@ def delete_expense(args, file_path):
         writer.writerows(new_csv)
 
     print(f"Expense updated successfully.")
+
+def summary_expense(args, file_path):
+    print("in summary")
